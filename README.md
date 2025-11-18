@@ -1,109 +1,136 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
-</a>
+🎬 Flago – Group Movie Decision App
+Flago is a cross-platform web application designed to help groups of friends quickly and fairly decide on a single movie to watch. Users can create rooms, join via shared links, submit personalized movie preferences, swipe through recommendations, and receive a final movie ranking generated through an ELO-based scoring algorithm.
 
-<p align="center">
- The fastest way to build apps with Next.js and Supabase
-</p>
+Built for both desktop and mobile, Flago brings a smooth, interactive, and visually dynamic experience.
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
-</p>
-<br/>
+🚀 Features
+🎉 Real-Time Group Rooms
 
-## Features
+Hosts create a party room and share a unique URL with friends.
 
-- Works across the entire [Next.js](https://nextjs.org) stack
-  - App Router
-  - Pages Router
-  - Middleware
-  - Client
-  - Server
-  - It just works!
-- supabase-ssr. A package to configure Supabase Auth to use cookies
-- Password-based authentication block installed via the [Supabase UI Library](https://supabase.com/ui/docs/nextjs/password-based-auth)
-- Styling with [Tailwind CSS](https://tailwindcss.com)
-- Components with [shadcn/ui](https://ui.shadcn.com/)
-- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
-  - Environment variables automatically assigned to Vercel project
+Friends join instantly — no sign-up required.
 
-## Demo
+All participants stay synced throughout the session.
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
+📝 Dynamic Preference Form
 
-## Deploy to Vercel
+Each user fills out a customizable form with:
 
-Vercel deployment will guide you through creating a Supabase account and project.
+Genre selection (required)
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
+Era preferences (optional)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
+Music-based mood input (Spotify API)
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
+Additional optional selectors
 
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+Users can skip all optional categories, making the process fast and flexible.
 
-## Clone and run locally
+⏳ Live Progress Tracking
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+Host dashboard shows completion progress of all users in real time.
 
-2. Create a Next.js app using the Supabase Starter template npx command
+Session begins only when the host starts the room.
 
-   ```bash
-   npx create-next-app --example with-supabase with-supabase-app
-   ```
+🎬 Movie Generation & Swiping
 
-   ```bash
-   yarn create next-app --example with-supabase with-supabase-app
-   ```
+Recommendations are generated based on all users' combined preferences.
 
-   ```bash
-   pnpm create next-app --example with-supabase with-supabase-app
-   ```
+Users interact with each movie using:
 
-3. Use `cd` to change into the app's directory
+➡️ Swipe right / Like
 
-   ```bash
-   cd with-supabase-app
-   ```
+⬅️ Swipe left / Dislike
 
-4. Rename `.env.example` to `.env.local` and update the following:
+🖱️ Or click corresponding buttons
 
-  ```env
-  NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=[INSERT SUPABASE PROJECT API PUBLISHABLE OR ANON KEY]
-  ```
-  > [!NOTE]
-  > This example uses `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, which refers to Supabase's new **publishable** key format.
-  > Both legacy **anon** keys and new **publishable** keys can be used with this variable name during the transition period. Supabase's dashboard may show `NEXT_PUBLIC_SUPABASE_ANON_KEY`; its value can be used in this example.
-  > See the [full announcement](https://github.com/orgs/supabase/discussions/29260) for more information.
+🧠 ELO-Based Ranking System
 
-  Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` can be found in [your Supabase project's API settings](https://supabase.com/dashboard/project/_?showConnect=true)
+The backend uses a custom ELO scoring algorithm to:
 
-5. You can now run the Next.js local development server:
+Rank movies based on collective user preferences
 
-   ```bash
-   npm run dev
-   ```
+Prevent ties
 
-   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
+Produce a final, consensus-based ranking
 
-6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
+✨ Modern UI & Interactive Feel
 
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
+Smooth, mobile-friendly UI
 
-## Feedback and issues
+3D animated background
 
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
+Micro-animations across forms, swipes, buttons, and lists
 
-## More Supabase examples
+A polished, app-like feel
 
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+Additional "About" and "Contact Us" pages for completeness
+
+🛠️ Tech Stack
+🖥️ Frontend
+
+React.js
+
+TailwindCSS / Custom CSS
+
+Swipe & gesture libraries
+
+3D animation libraries (e.g., Three.js)
+
+Responsive mobile + desktop layout
+
+☁️ Backend
+
+Node.js / Express
+
+Supabase
+
+Spotify Web API (song ↔ mood analysis)
+
+Movie Data API (TMDB or equivalent)
+
+Custom ELO ranking algorithm
+
+🔧 Other Tools
+
+Git / GitHub
+
+Deployment platforms (e.g., Vercel, Netlify, Render, Railway)
+
+Environment variable handling
+
+🔐 Supabase Integration
+Flago uses Supabase to handle all room and user persistence logic:
+
+🚪 Room Creation: When a host creates a room, a new room entry is stored.
+
+🤝 User Joining: As users join via the shared link, they are added to that room’s session.
+
+💾 Preference Storage: User preferences (genres, eras, music inputs) are stored in Supabase to ensure:
+
+State persistence
+
+Accurate backend processing
+
+Reliable ELO calculations
+
+🔄 State Syncing: Supabase also helps sync state if users refresh their browser or reconnect.
+
+This allows the app to build real-time, multi-user functionality without managing a database from scratch.
+
+🧩 How It Works
+Create: Host creates a room → receives shareable link.
+
+Join: Friends join the room via URL.
+
+Submit: Each user completes the preference form.
+
+Monitor: Host monitors progress from their dashboard.
+
+Generate: Backend generates movies based on combined preferences.
+
+Swipe: Users swipe / like / dislike recommended movies.
+
+Calculate: ELO ranking algorithm calculates final scores.
+
+View: Final results page displays the top movie picks for the group.
